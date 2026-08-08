@@ -1,0 +1,25 @@
+# source_url: https://epassport.gov.bd/instructions/instructions (required documents section — grab exact URL from address bar)
+# accessed: 2026-08-09
+# page_last_updated: 7 May 2025
+# language: en+bn
+# section: required_documents
+
+Documents needed to be carried during enrolment at Passport offices:
+
+1. Printed application summary including appointment (if any).
+2. Identification documents (NID card / Birth certificate - Original)
+3. Payment Slip for Offline Payment only.
+4. Previous Passport (if any).
+5. GO/NOC for government service holder (as applicable).
+6. Printed application form.
+7. Further necessity of documents depends on nature of application/corrections (if any).
+
+পাসপোর্ট অফিসে আবেদনপত্র জমা দেওয়ার সময় যে সকল প্রয়োজনীয় কাগজপত্র নিয়ে যেতে হবে:
+
+১। আবেদনপত্রের সারংশের প্রিন্ট কপি (অ্যাপয়েন্টমেন্ট সহ)।
+২। সনাক্তকরণ নথির প্রিন্ট কপি (জাতীয় পরিচয় পত্র/ জন্ম নিবন্ধন নং)।
+৩। পেমেন্ট স্লিপ (for Offline Payment only)।
+৪। পূর্ববর্তী পাসপোর্ট এবং ডাটা পেজের প্রিন্ট কপি (যদি থাকে)।
+৫। সরকারি চাকরিজীবীদের ক্ষেত্রে GO/NOC (যদি থাকে)।
+৬। আবেদনপত্রের প্রিন্ট কপি।
+৭। তথ্য সংশোধনের ক্ষেত্রে প্রয়োজনীয় কাগজপত্র (যদি থাকে)।
