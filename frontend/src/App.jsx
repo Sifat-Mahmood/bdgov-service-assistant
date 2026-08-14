@@ -1,30 +1,17 @@
-import { useState } from "react"
-import { sendChatMessage } from "./api/client"
+import CitationChip from "./components/CitationChip"
 
 function App() {
-  const [result, setResult] = useState(null)
-  const [error, setError] = useState(null)
-
-  async function handleTestClick() {
-    setError(null)
-    setResult(null)
-    try {
-      const data = await sendChatMessage(
-        "What documents do I need for a passport?",
-        "test-session-1"
-      )
-      setResult(data)
-    } catch (err) {
-      setError(err.message)
-    }
-  }
-
   return (
     <div className="app">
       <h1>Bangla Gov-Service Assistant</h1>
-      <button onClick={handleTestClick}>Test backend connection</button>
-      {error && <p style={{ color: "red" }}>Error: {error}</p>}
-      {result && <pre>{JSON.stringify(result, null, 2)}</pre>}
+      <CitationChip
+        doc="required_documents"
+        excerpt="Documents needed to be carried during enrolment at Passport offices: 1. Printed application summary including appointment (if any). 2. Identification documents (NID card / Birth certificate - Original)."
+      />
+      <CitationChip
+        doc="required_documents_detailed"
+        excerpt="Documents Checklist for e-Passport Enrollment — Last updated: 21 October 2024."
+      />
     </div>
   )
 }
