@@ -18,3 +18,4 @@ class ChatResponse(BaseModel):
     citations: list[Citation]
     confident: bool
     domain: str
+
