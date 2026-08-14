@@ -16,3 +16,11 @@ if not DATABASE_URL:
     raise RuntimeError(
         "DATABASE_URL not found. Did you add it to backend/.env?"
     )
+
+
+JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+
+if not JWT_SECRET_KEY:
+    raise RuntimeError(
+        "JWT_SECRET_KEY not found. Did you add it to backend/.env?"
+    )
