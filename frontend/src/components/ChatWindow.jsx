@@ -46,7 +46,7 @@ function ChatWindow({ token }) {
     <div className="chat-window">
       <div className="message-list">
         {messages.map((msg, i) => (
-          <div key={i} className="message-group">
+          <div key={i} className={`message-group ${msg.role === "user" ? "group-user" : "group-assistant"}`}>
             <MessageBubble role={msg.role} text={msg.text} />
             {msg.role === "assistant" && msg.domain && (
               <div className="message-meta">
