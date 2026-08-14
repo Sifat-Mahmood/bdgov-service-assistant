@@ -1,8 +1,7 @@
 from fastapi import FastAPI
+from app.routers import health, chat
 
 app = FastAPI(title="Bangla Government-Service Assistant")
 
-
-@app.get("/health")
-def health():
-    return {"status": "ok"}
+app.include_router(health.router)
+app.include_router(chat.router)
