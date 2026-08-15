@@ -6,16 +6,28 @@ embeds each chunk, and stores everything in a persistent Chroma collection.
 
 Run manually whenever source documents change (Section 10.1) - not part of
 the live request path.
+
+Day 7 update: switched from sentence-transformers to fastembed (ONNX
+Runtime backend) to avoid PyTorch's memory footprint on free-tier hosting.
+Tokenizer is now loaded independently via the `tokenizers` library, since
+fastembed doesn't expose a `.tokenizer` shortcut the way sentence-transformers
+did. Same underlying tokenizer (same model, same repo family) - chunk
+boundaries should be identical to before. See Revision Log.
 """
 
 import os
 from pathlib import Path
-from sentence_transformers import SentenceTransformer
+from fastembed import TextEmbedding
+from fastembed.common.model_description import PoolingType, ModelSource
+from tokenizers import Tokenizer
 import chromadb
 
 DOCUMENTS_DIR = Path(__file__).parent / "documents"
 CHROMA_DB_DIR = Path(__file__).parent.parent / "chroma_db"  # persisted DB lives in app/chroma_db
 COLLECTION_NAME = "govservice_docs"
+
+MODEL_NAME = "xenova-e5-small-quantized"
+HF_REPO = "Xenova/multilingual-e5-small"
 
 CHUNK_SIZE = 400   # tokens, measured by the embedding model's own tokenizer
 CHUNK_OVERLAP = 50
@@ -44,7 +56,7 @@ def parse_document(filepath):
 
 def chunk_text(text, tokenizer, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
     """Splits text into overlapping chunks, measured in the model's own tokens."""
-    token_ids = tokenizer.encode(text, add_special_tokens=False)
+    token_ids = tokenizer.encode(text, add_special_tokens=False).ids
     if not token_ids:
         return []
     chunks = []
@@ -78,8 +90,16 @@ def build_index():
     """Full pipeline: discover -> parse -> chunk -> embed -> store in Chroma."""
 
     print("Loading embedding model...")
-    model = SentenceTransformer("intfloat/multilingual-e5-small")
-    tokenizer = model.tokenizer
+    TextEmbedding.add_custom_model(
+        model=MODEL_NAME,
+        pooling=PoolingType.MEAN,
+        normalization=True,
+        sources=ModelSource(hf=HF_REPO),
+        dim=384,
+        model_file="onnx/model_quantized.onnx",
+    )
+    model = TextEmbedding(model_name=MODEL_NAME)
+    tokenizer = Tokenizer.from_pretrained(HF_REPO)
 
     print("Connecting to Chroma...")
     client = chromadb.PersistentClient(path=str(CHROMA_DB_DIR))
@@ -112,7 +132,7 @@ def build_index():
             }
 
             prefixed_chunk = f"passage: {chunk}"
-            embedding = model.encode(prefixed_chunk)
+            embedding = list(model.embed([prefixed_chunk]))[0]
 
             all_ids.append(chunk_id)
             all_embeddings.append(embedding.tolist())
