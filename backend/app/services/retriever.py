@@ -31,10 +31,18 @@ TextEmbedding.add_custom_model(
     model_file="onnx/model_quantized.onnx",
 )
 
+import onnxruntime as ort
+
 _model = TextEmbedding(
     model_name=MODEL_NAME,
     providers=["CPUExecutionProvider"],
-    session_options={"enable_cpu_mem_arena": False, "enable_mem_pattern": False},
+    session_options={
+        "enable_cpu_mem_arena": False,
+        "enable_mem_pattern": False,
+        "intra_op_num_threads": 1,
+        "inter_op_num_threads": 1,
+        "graph_optimization_level": ort.GraphOptimizationLevel.ORT_DISABLE_ALL,
+    },
 )
 
 with open(DATA_PATH, "r", encoding="utf-8") as f:

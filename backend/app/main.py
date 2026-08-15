@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import health, chat, auth
+from app.routers import health, chat
 
 app = FastAPI(title="Bangla Government-Service Assistant")
 
@@ -14,4 +14,3 @@ app.add_middleware(
 
 app.include_router(health.router)
 app.include_router(chat.router)
-app.include_router(auth.router)
