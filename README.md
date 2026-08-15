@@ -15,6 +15,14 @@ when it lacks confident coverage.
 **🔗 API health check:** https://bdgov-service-assistant.onrender.com/health
 
 ---
+## Demo Video
+
+
+
+https://github.com/user-attachments/assets/203741ef-6db6-4d26-aa0d-0408c94b94db
+
+
+---
 
 ## Table of Contents
 - [Problem & Motivation](#problem--motivation)
