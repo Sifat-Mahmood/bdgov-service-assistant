@@ -5,7 +5,7 @@ import CitationChip from "./CitationChip"
 import ConfidenceBadge from "./ConfidenceBadge"
 import DomainTag from "./DomainTag"
 
-function ChatWindow({ token }) {
+function ChatWindow() {
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState("")
   const [loading, setLoading] = useState(false)
@@ -21,7 +21,7 @@ function ChatWindow({ token }) {
     setLoading(true)
 
     try {
-      const data = await sendChatMessage(question, sessionId, token)
+      const data = await sendChatMessage(question, sessionId)
       setMessages((prev) => [
         ...prev,
         {
