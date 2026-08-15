@@ -1,0 +1,179 @@
+
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Eval questions · JSON
+{
+  "note": "Full 30-40 question eval set (Section 14) was not completed before submission due to time constraints. This file contains: (1) the 6 live smoke-test cases that WERE actually run against the deployed app with recorded results, and (2) an additional 8-question Passport subset that was drafted but NOT executed before submission. Status field distinguishes them.",
+  "questions": [
+    {
+      "id": "SMOKE-01",
+      "question": "What documents do I need for a new passport application?",
+      "language": "en",
+      "domain_expected": "passport",
+      "expected_behavior": "answer",
+      "key_fact_must_include": null,
+      "status": "executed",
+      "result": "pass",
+      "notes": "Live smoke test, run against deployed app. Confident, 2 citations."
+    },
+    {
+      "id": "SMOKE-02",
+      "question": "আমার এনআইডি সংশোধন করতে কী কী কাগজ লাগবে?",
+      "language": "bn",
+      "domain_expected": "nid",
+      "expected_behavior": "answer",
+      "key_fact_must_include": null,
+      "status": "executed",
+      "result": "pass",
+      "notes": "Live smoke test. Confident, Bangla answer, 1 citation. Confirms bilingual support."
+    },
+    {
+      "id": "SMOKE-03",
+      "question": "How do I register a land plot in my name?",
+      "language": "en",
+      "domain_expected": "out_of_scope",
+      "expected_behavior": "abstain",
+      "key_fact_must_include": null,
+      "status": "executed",
+      "result": "pass",
+      "notes": "Live smoke test. Correctly refused as out-of-scope."
+    },
+    {
+      "id": "SMOKE-04",
+      "question": "What is the deadline for filing income tax returns?",
+      "language": "en",
+      "domain_expected": "tax",
+      "expected_behavior": "answer",
+      "key_fact_must_include": null,
+      "status": "executed",
+      "result": "pass",
+      "notes": "Live smoke test. Confident, 1 citation, correct date."
+    },
+    {
+      "id": "SMOKE-05",
+      "question": "What documents do I need for a new electricity connection?",
+      "language": "en",
+      "domain_expected": "utilities",
+      "expected_behavior": "answer",
+      "key_fact_must_include": null,
+      "status": "executed",
+      "result": "pass",
+      "notes": "Live smoke test. Confident, 3 citations."
+    },
+    {
+      "id": "SMOKE-06",
+      "question": "How do I file a billing complaint for my electricity connection?",
+      "language": "en",
+      "domain_expected": "utilities",
+      "expected_behavior": "abstain",
+      "key_fact_must_include": null,
+      "status": "executed",
+      "result": "pass",
+      "notes": "Live smoke test. Correctly abstained (known documentation gap)."
+    },
+    {
+      "id": "PP-01",
+      "question": "How much does a 10-year, 48-page e-passport cost with regular delivery inside Bangladesh?",
+      "language": "en",
+      "domain_expected": "passport",
+      "expected_behavior": "answer",
+      "key_fact_must_include": "5,750",
+      "status": "drafted_not_executed",
+      "result": null,
+      "notes": "Baseline confidence check."
+    },
+    {
+      "id": "PP-02",
+      "question": "১০ বছর মেয়াদী ৪৮ পাতার পাসপোর্টের রেগুলার ডেলিভারি ফি কত?",
+      "language": "bn",
+      "domain_expected": "passport",
+      "expected_behavior": "answer",
+      "key_fact_must_include": null,
+      "status": "drafted_not_executed",
+      "result": null,
+      "notes": "Manual check only - Bangla numeral rendering may vary."
+    },
+    {
+      "id": "PP-03",
+      "question": "How much does a 10 year passport cost?",
+      "language": "en",
+      "domain_expected": "passport",
+      "expected_behavior": "answer",
+      "key_fact_must_include": "5,750",
+      "status": "drafted_not_executed",
+      "result": null,
+      "notes": "KNOWN EDGE CASE (see final_report.md Section 6) - previously incorrectly abstained due to confidence-gate partial-credit bug. Priority case for future fix verification."
+    },
+    {
+      "id": "PP-04",
+      "question": "What documents do I need to bring when I go to enroll for my passport application?",
+      "language": "en",
+      "domain_expected": "passport",
+      "expected_behavior": "answer",
+      "key_fact_must_include": "NID",
+      "status": "drafted_not_executed",
+      "result": null,
+      "notes": null
+    },
+    {
+      "id": "PP-05",
+      "question": "পাসপোর্ট আবেদনের জন্য আমার কী কী কাগজপত্র লাগবে?",
+      "language": "bn",
+      "domain_expected": "passport",
+      "expected_behavior": "answer",
+      "key_fact_must_include": "পরিচয়",
+      "status": "drafted_not_executed",
+      "result": null,
+      "notes": null
+    },
+    {
+      "id": "PP-06",
+      "question": "How much does a passport cost for a Bangladeshi labourer applying at a mission abroad, 48-page, 5-year, regular delivery?",
+      "language": "en",
+      "domain_expected": "passport",
+      "expected_behavior": "answer",
+      "key_fact_must_include": "USD 30",
+      "status": "drafted_not_executed",
+      "result": null,
+      "notes": "Tests retrieval precision across three separate fee tables."
+    },
+    {
+      "id": "PP-07",
+      "question": "What document does a minor under 18 need for a passport application if they don't have their own NID?",
+      "language": "en",
+      "domain_expected": "passport",
+      "expected_behavior": "answer",
+      "key_fact_must_include": "birth",
+      "status": "drafted_not_executed",
+      "result": null,
+      "notes": null
+    },
+    {
+      "id": "PP-08",
+      "question": "How many working days does it take to get a regular (non-express) passport in Bangladesh?",
+      "language": "en",
+      "domain_expected": "passport",
+      "expected_behavior": "answer",
+      "key_fact_must_include": "15",
+      "status": "drafted_not_executed",
+      "result": null,
+      "notes": null
+    }
+  ]
+}
